@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityFragment fragment;
     private DBAdapter db;
     private Cursor c;
+    private final static String DEBUG_TAG = "myCalculator";
 
     public MainActivity() {
         ACTIVITY_SELECT = 0;
@@ -56,20 +57,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //@Override
-    /*public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
-
     public void onCalculate(View view){
         if (fragment != null)
             fragment.onCalculate(view); //Kun nappia painetaan
@@ -79,25 +66,27 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
 
         switch (item.getItemId()) {
-            case R.id.select:
+            case R.id.action_list:
                 Toast.makeText(this, "Just select", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(this, ListView.class); // create intent object for starting an activity
                 startActivityForResult(i, ACTIVITY_SELECT); // start an activity
                 return true;
-            case R.id.add:
+            case R.id.action_add:
                 Toast.makeText(this, "Just add", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.clear:
                 Toast.makeText(this, "Just clear", Toast.LENGTH_SHORT).show();
                 return true;
+            case R.id.action_update:
+                Toast.makeText(this, "Just update", Toast.LENGTH_SHORT.show();
 
-            /*int id;
+            int id = item.getItemId();
 
             if (id == R.id.action_settings) {
                 return true;
             } else if (id == R.id.action_list) {
 
-            }*/
+            }
         }return super.onOptionsItemSelected(item);
     }
 

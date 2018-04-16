@@ -1,5 +1,6 @@
 package com.example.metropolia.calculator;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -8,12 +9,15 @@ import com.example.metropolia.calculator.DBAdapter.*;
 import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 
 // MyContentProvider-class is based on implementation found from here: 
@@ -163,4 +167,55 @@ public class MyContentProvider extends ContentProvider {
 	      }
 	    }
 	  }
+
+	public Context getBaseContext() {
+		return baseContext;
+	}
+
+	private class DownloadWebpageTask extends AsyncTask<String, Void, String> {
+
+
+	  /*else if (id == R.id.update){
+			  if (isNetworkAvailable()){
+				  try {
+					  new DownloadWebpageTask().execute("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml");
+
+				  }
+				  catch (Exception e) {
+					  Toast.makeText(this, "Reading the web page is unsuccesfull", Toast.LENGTH_SHORT).show();
+				  }
+			  }
+			  else
+				  Toast.makeText(this, "Network is not available", Toast.LENGTH_SHORT).show();
+
+		  }*/
+
+		@Override
+		protected String doInBackground(String... url) {
+
+			// params comes from the execute() call: params[0] is the url.
+			try (IOException e){
+				
+
+				return downLoadUrl(url[0]);
+			} catch (IOException e) {
+				return "Unable to retrieve web page. URL may be invalid.";
+			}
+		}
+
+		  private String downLoadUrl(String s) {
+			return s;
+		  }
+
+		  // onPostExecute displays the results of the AsyncTask.
+		@Override
+		protected void onPostExecute(String result) {
+
+			Toast.makeText(getBaseContext(), result, Toast.LENGTH_LONG).show();
+
+			String URL = "content://<authority>/currencies";
+			//....
+
+		}
+	}
 }
