@@ -32,8 +32,8 @@ public class MyBoundService extends Service {
         Toast.makeText(this, "My Bound Service Created", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onCreate");
 
-        player = MediaPlayer.create(this, R.raw.gd8164kb);
-        //player = MediaPlayer.create(this, R.raw.influence);
+        //player = MediaPlayer.create(this, R.raw.gd8164kb);
+        player = MediaPlayer.create(this, R.raw.influence);
         player.setLooping(false); // Set looping
         player.start(); // if the start-command of a player is called from here and startservice is not called
         // then the bound service is stopped (and destroyed) automatically when the caller is destroyed

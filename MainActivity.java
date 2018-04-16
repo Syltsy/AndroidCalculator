@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         if (fragment != null)
             fragment.onCalculate(view); //Kun nappia painetaan
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
@@ -78,15 +79,18 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Just clear", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_update:
-                Toast.makeText(this, "Just update", Toast.LENGTH_SHORT.show();
-
-            int id = item.getItemId();
-
-            if (id == R.id.action_settings) {
+                Toast.makeText(this, "Just update", Toast.LENGTH_SHORT).show();
                 return true;
-            } else if (id == R.id.action_list) {
+            case R.id.action_settings:
+                Toast.makeText(this, "Just settings", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_start:
+                Toast.makeText(this, "Just start", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_stop:
+                Toast.makeText(this, "Just stop", Toast.LENGTH_SHORT).show();
 
-            }
+
         }return super.onOptionsItemSelected(item);
     }
 
